@@ -2,9 +2,9 @@
 
 A revolutionary AI-powered marketing platform built with Next.js 14, featuring intelligent automation, personalized campaigns, and data-driven insights.
 
-![ADmyBRAND AI Suite](./public/placeholder.jpg)
+[ADmyBRAND AI Suite]
 
-## 🌟 Features
+## Features
 
 ### Core Features
 - **AI-Powered Marketing Automation** - Intelligent campaign optimization
@@ -22,7 +22,7 @@ A revolutionary AI-powered marketing platform built with Next.js 14, featuring i
 - **Dark Theme** - Beautiful gradient-based dark interface
 - **Touch Gestures** - Mobile-optimized interactions
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: Next.js 14 with App Router
 - **Language**: TypeScript
@@ -34,7 +34,7 @@ A revolutionary AI-powered marketing platform built with Next.js 14, featuring i
 - **UI Components**: Radix UI + shadcn/ui
 - **Package Manager**: npm/pnpm
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -79,7 +79,7 @@ npm run build
 npm run start
 ```
 
-## 📱 Mobile Optimization
+##  Mobile Optimization
 
 The application is fully optimized for mobile devices with:
 
@@ -89,7 +89,7 @@ The application is fully optimized for mobile devices with:
 - **Fast Loading** - Optimized assets and code splitting
 - **Touch-Friendly UI** - Large touch targets and proper spacing
 
-## 🎨 Design System
+##  Design System
 
 ### Color Palette
 - **Primary**: Blue to Purple gradient (`from-blue-500 to-purple-600`)
@@ -108,7 +108,7 @@ The application is fully optimized for mobile devices with:
 - **Micro-interactions**: Hover effects and button animations
 - **Mobile Optimized**: Reduced motion for performance
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment Variables
 
@@ -127,7 +127,7 @@ The project uses a custom Tailwind configuration with:
 - Mobile-safe area support
 - Custom spacing and typography
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 ├── app/                    # Next.js 14 App Router
@@ -148,7 +148,7 @@ The project uses a custom Tailwind configuration with:
 └── styles/              # Additional styles
 ```
 
-## 🎯 Key Components
+##  Key Components
 
 ### Hero Section
 - Animated hero with call-to-action
@@ -176,7 +176,7 @@ The project uses a custom Tailwind configuration with:
 - Success/error states
 - Email integration ready
 
-## 🎨 Customization
+##  Customization
 
 ### Adding New Components
 
@@ -199,7 +199,7 @@ The project uses a custom Tailwind configuration with:
 - Optimize for mobile performance
 - Maintain accessibility standards
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run linting
@@ -212,7 +212,7 @@ npx tsc --noEmit
 npm run build
 ```
 
-## 📱 Browser Support
+##  Browser Support
 
 - **Chrome** 90+
 - **Firefox** 88+
@@ -220,7 +220,7 @@ npm run build
 - **Edge** 90+
 - **Mobile Browsers** - iOS Safari 14+, Chrome Mobile 90+
 
-## 🚀 Deployment
+##  Deployment
 
 ### Vercel (Recommended)
 
@@ -236,7 +236,7 @@ The application can be deployed to any platform supporting Node.js:
 - DigitalOcean App Platform
 - AWS Amplify
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -244,11 +244,11 @@ The application can be deployed to any platform supporting Node.js:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - [Next.js](https://nextjs.org/) - The React framework
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
@@ -256,10 +256,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Radix UI](https://www.radix-ui.com/) - Headless UI components
 - [Lenis](https://lenis.studiofreight.com/) - Smooth scroll library
 
-## 📞 Support
+## Support
 
 For support, email support@admybrand.com or create an issue on GitHub.
 
 ---
 
-**Made with ❤️ by the ADmyBRAND team**
+**Made with ❤️ for marketers**

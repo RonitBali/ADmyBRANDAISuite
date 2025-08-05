@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Mail, Phone, MessageSquare, Send, AlertCircle, CheckCircle } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -47,49 +47,35 @@ export default function ContactModal() {
   const contactModal = useContactModal()
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+  const scrollPositionRef = useRef<number>(0)
 
   // Lock body scroll when modal is open
   useEffect(() => {
     if (contactModal.isOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY
+      // Save current scroll position in ref for reliable access
+      scrollPositionRef.current = window.scrollY
+      
+      // Get the current page width to prevent layout shift
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
       
       // Add class to body for CSS control
       document.body.classList.add('modal-open')
       
-      // Apply multiple methods to prevent body scroll
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.left = '0'
-      document.body.style.right = '0'
+      // Use overflow hidden method instead of position fixed
       document.body.style.overflow = 'hidden'
-      document.body.style.width = '100%'
-      
-      // Also lock html element
+      document.body.style.paddingRight = `${scrollbarWidth}px`
       document.documentElement.style.overflow = 'hidden'
-      document.documentElement.style.position = 'fixed'
-      document.documentElement.style.width = '100%'
-      document.documentElement.style.height = '100%'
 
       return () => {
         // Remove class from body
         document.body.classList.remove('modal-open')
         
         // Restore all styles
-        document.body.style.position = ''
-        document.body.style.top = ''
-        document.body.style.left = ''
-        document.body.style.right = ''
         document.body.style.overflow = ''
-        document.body.style.width = ''
-        
+        document.body.style.paddingRight = ''
         document.documentElement.style.overflow = ''
-        document.documentElement.style.position = ''
-        document.documentElement.style.width = ''
-        document.documentElement.style.height = ''
         
-        // Restore scroll position
-        window.scrollTo(0, scrollY)
+        // No need to restore scroll position since we didn't change it
       }
     }
   }, [contactModal.isOpen])
@@ -116,11 +102,7 @@ export default function ContactModal() {
       }
     }
 
-    const preventDefault = (e: Event) => {
-      e.preventDefault()
-    }
-
-    const preventScroll = (e: WheelEvent | TouchEvent) => {
+    const preventScroll = (e: WheelEvent) => {
       // Allow scroll only within modal
       const target = e.target as Element
       const modalElement = document.querySelector('.modal-scroll')
@@ -130,24 +112,15 @@ export default function ContactModal() {
       }
       
       e.preventDefault()
-      e.stopPropagation()
     }
 
     if (contactModal.isOpen) {
       document.addEventListener('keydown', handleKeyDown)
-      
-      // Prevent various scroll events
       document.addEventListener('wheel', preventScroll, { passive: false })
-      document.addEventListener('touchmove', preventScroll, { passive: false })
-      document.addEventListener('scroll', preventDefault, { passive: false })
-      window.addEventListener('scroll', preventDefault, { passive: false })
       
       return () => {
         document.removeEventListener('keydown', handleKeyDown)
         document.removeEventListener('wheel', preventScroll)
-        document.removeEventListener('touchmove', preventScroll)
-        document.removeEventListener('scroll', preventDefault)
-        window.removeEventListener('scroll', preventDefault)
       }
     }
   }, [contactModal.isOpen, isSubmitting])
@@ -160,6 +133,8 @@ export default function ContactModal() {
       setSubmitStatus('idle')
       setSubmitMessage('')
       contactModal.onClose()
+      
+      // No manual scroll restoration needed since we don't change position
     }
   }
 
@@ -265,11 +240,14 @@ export default function ContactModal() {
                 background: rgba(255, 255, 255, 0.5);
               }
               
-              /* Prevent body scroll when modal is open */
+              /* Prevent body scroll when modal is open - improved method */
               body.modal-open {
                 overflow: hidden !important;
-                position: fixed !important;
-                width: 100% !important;
+                touch-action: none !important;
+              }
+              
+              html:has(body.modal-open) {
+                overflow: hidden !important;
               }
             `}</style>
               {/* Header */}

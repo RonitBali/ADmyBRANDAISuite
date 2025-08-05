@@ -4,9 +4,11 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Plus, Minus } from "lucide-react"
 import Card from "@/components/ui/card"
+import { useContactModal } from "@/hooks/use-contact-modal"
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const contactModal = useContactModal()
 
   const faqs = [
     {
@@ -142,6 +144,7 @@ export default function FAQSection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => contactModal.onOpen()}
                 className="px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 text-sm sm:text-base"
               >
                 Contact Support
